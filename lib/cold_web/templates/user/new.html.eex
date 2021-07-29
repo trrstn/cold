@@ -1,0 +1,24 @@
+<h1>Create User</h1>
+<%= form_for @changeset, @action, fn f -> %>
+  <div>
+    <%= label f, :firstname %>
+    <%= text_input f, :firstname %>
+    <%= error_tag f, :firstname %>
+  </div>
+  <div>
+    <%= label f, :lastname %>
+    <%= text_input f, :lastname %>
+    <%= error_tag f, :lastname %>
+  </div>
+  <div>
+    <%= label f, :email %>
+    <%= email_input f, :email %>
+    <%= error_tag f, :email %>
+  </div>
+  <div>
+    <%= label f, :hashed_password %>
+    <%= password_input f, :hashed_password %>
+    <%= error_tag f, :hashed_password %>
+  </div>
+  <%= submit "Submit" %>
+<% end %>
