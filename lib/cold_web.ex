@@ -38,6 +38,24 @@ defmodule ColdWeb do
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 
       # Include shared imports and aliases for views
+      import Phoenix.LiveView.Helpers
+      unquote(view_helpers())
+    end
+  end
+
+  def live_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {ColdWeb.LayoutView, "live.html"}
+
+      unquote(view_helpers())
+    end
+  end
+
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+
       unquote(view_helpers())
     end
   end
@@ -48,6 +66,7 @@ defmodule ColdWeb do
 
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

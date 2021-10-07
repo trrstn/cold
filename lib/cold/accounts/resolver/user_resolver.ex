@@ -2,6 +2,7 @@ defmodule Cold.Accounts.UserResolver do
   alias Cold.Accounts.User
   alias Cold.Repo
   import Ecto.Changeset
+  import Ecto.Query
 
   def list_users do
     Repo.all(User)
@@ -29,5 +30,12 @@ defmodule Cold.Accounts.UserResolver do
     user
     |> edit_changeset(params)
     |> Repo.update()
+  end
+
+  def find_user(value) do
+    User
+    |> where([u], like(u.firstname, ^("%#{value}%")))
+    |> or_where([u], like(u.lastname, ^("%#{value}%")))
+    |> Repo.all
   end
 end

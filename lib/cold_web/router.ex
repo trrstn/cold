@@ -4,9 +4,10 @@ defmodule ColdWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug(:put_root_layout, {ColdWeb.LayoutView, :root})
   end
 
   pipeline :api do
@@ -18,6 +19,7 @@ defmodule ColdWeb.Router do
 
     get "/", PageController, :index
     get "/users", UserController, :index
+    # live "/users", UsersLive
     get "/users/new", UserController, :new
     post "/users/create", UserController, :create
     get "/users/:user_id/edit", UserController, :edit

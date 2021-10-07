@@ -7,4 +7,5 @@ defmodule Cold.Accounts do
   defdelegate create_changeset(params \\ %{}), to: UserResolver
   defdelegate edit_changeset(user, params \\ %{}), to: UserResolver
   defdelegate update_user(user, params \\ %{}), to: UserResolver
+  defdelegate find_user(keyword), to: UserResolver
 end
