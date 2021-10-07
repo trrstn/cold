@@ -15,4 +15,9 @@ defmodule ColdWeb.UsersLive do
     filtered_users = Accounts.find_user(keyword)
     {:noreply, assign(socket, users: filtered_users)}
   end
+
+  def handle_event("sort", %{"order" => order}, socket) do
+    sorted_users = Accounts.sort_name(order)
+    {:noreply, assign(socket, users: sorted_users)}
+  end
 end

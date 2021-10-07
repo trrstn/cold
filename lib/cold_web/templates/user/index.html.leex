@@ -1,5 +1,6 @@
 <h1>Users:</h1>
 <span> Search: <input type="text" name="search" width="300" phx-keyup="search" placeholder="type name here" /></span>
+<a phx-click="sort" phx-value-order="asc">ASC</a> | <a phx-click="sort" phx-value-order="desc">DESC</a>
 <hr />
 <%= for user <- @users do %>
   <p>

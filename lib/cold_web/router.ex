@@ -18,8 +18,8 @@ defmodule ColdWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/users", UserController, :index
-    # live "/users", UsersLive
+    # get "/users", UserController, :index
+    live "/users", UsersLive
     get "/users/new", UserController, :new
     post "/users/create", UserController, :create
     get "/users/:user_id/edit", UserController, :edit
