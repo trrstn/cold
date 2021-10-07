@@ -4,7 +4,7 @@ defmodule ColdWeb.UsersLive do
 
   def mount(_params, _session, socket) do
     users = Accounts.list_users
-    {:ok, assign(socket, users: users, keyword: "")}
+    {:ok, assign(socket, users: users)}
   end
 
   def render(assigns) do
@@ -13,6 +13,6 @@ defmodule ColdWeb.UsersLive do
 
   def handle_event("search", %{"value" => keyword}, socket) do
     filtered_users = Accounts.find_user(keyword)
-    {:noreply, assign(socket, users: filtered_users, keyword: keyword)}
+    {:noreply, assign(socket, users: filtered_users)}
   end
 end

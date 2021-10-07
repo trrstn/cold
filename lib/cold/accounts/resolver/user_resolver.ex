@@ -32,6 +32,13 @@ defmodule Cold.Accounts.UserResolver do
     |> Repo.update()
   end
 
+  def sort_name(order) do
+    val = String.to_atom(order)
+    User
+    |> order_by({^val, :firstname})
+    |> Repo.all
+  end
+
   def find_user(value) do
     User
     |> where([u], like(u.firstname, ^("%#{value}%")))

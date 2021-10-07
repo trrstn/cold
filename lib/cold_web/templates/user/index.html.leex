@@ -1,5 +1,6 @@
 <h1>Users:</h1>
-<%# <span> Search: <input type="text" name="search" width="300" phx-keyup="search" placeholder="type name here" value="= @keyword"  /></span> %>
+<span> Search: <input type="text" name="search" width="300" phx-keyup="search" placeholder="type name here" /></span>
+<hr />
 <%= for user <- @users do %>
   <p>
     <%= link "#{user.firstname} #{user.lastname}", to: Routes.user_path(ColdWeb.Endpoint, :edit, user) %>
